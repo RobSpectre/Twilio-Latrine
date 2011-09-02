@@ -32,11 +32,11 @@ Installing
 
 Latrine runs on Google App Engine.  To install, follow these steps:
 
-# Install the [Google App Engine SDK for Python](http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Python)
-# Clone [this repository](git@github.com:RobSpectre/Twilio-Latrine.git).
-# Change the value of application in app.yaml.
-# Add your Twilio credentials and restroom configuration to local_settings.py
-# Deploy to Google App Engine
+1. Install the [Google App Engine SDK for Python](http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Python)
+1. Clone [this repository](git@github.com:RobSpectre/Twilio-Latrine.git).
+1. Change the value of application in app.yaml.
+1. Add your Twilio credentials and restroom configuration to local_settings.py
+1. Deploy to Google App Engine
 
 <pre>
     appcfg.py update twiliolatrine/
