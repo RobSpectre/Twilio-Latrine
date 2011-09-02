@@ -7,6 +7,8 @@ of course), directions for those who might be confused, and a bunch of other fun
 
 Text HELP to (415) 237-2388 to see it in action.
 
+btw - I love working at Twilio.  I think you will too - [join us](http://www.twilio.com/company/jobs).
+
 
 Usage
 -------------------------
