@@ -1,0 +1,13 @@
+application: twiliolatrine
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /test.*
+  script: gaeunit.py
+- url: /cleanup.*
+  script: latrine.py
+  login: admin   
+- url: /.*
+  script: latrine.py

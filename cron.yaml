@@ -1,0 +1,5 @@
+cron:
+- description: clean up queue and checkins
+  url: /cleanup
+  schedule: every 5 minutes
+  
