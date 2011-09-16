@@ -64,6 +64,10 @@ class SmsHandler(MainPage):
             r = self.courtesy()
         elif body == "FPS" or "AIM" in body or "AIMING" in body:
             r = self.aiming()
+        elif "FOOD" in body or "EAT" in body or "EATING" in body:
+            r = self.eating()
+        elif "FEBREEZE" in body or "FEBREZE" in body or "SPRAY" in body or "ODOR" in body:
+            r = self.febreze()
         elif body == "WWJD":
             r = self.drawTheOwl()
         elif body == "C" or "CREDITS" in body:
@@ -261,6 +265,16 @@ class SmsHandler(MainPage):
     def credits(self):
         r = twiml.Response()
         r.sms("Written by /rob, 30 August 2011.  http://www.brooklynhacker.com")
+        return r
+    
+    def eating(self):
+        r = twiml.Response()
+        r.sms("Do not shit where you eat, and do not eat where you shit. - Lisa, Sep 2011")
+        return r
+    
+    def febreze(self):
+        r = twiml.Response()
+        r.sms("If you apply a generous Febrezing to the bathroom, wipe off the seat when you're done.  - Shawn, Sep 2011")
         return r
     
     def drawTheOwl(self):

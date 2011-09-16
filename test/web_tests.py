@@ -33,11 +33,14 @@ class LatrineTest(unittest.TestCase):
         self.keywords_read = ("R", "READ", "READING")
         self.keywords_help = ("H", "HELP", "README", "?")
         self.keywords_directions = ("D", "PROTIPS", "DIRECTIONS")
-        self.keywords_directions = ("TP", "TOILET PAPER", "PAPER")
-        self.keywords_directions = ("A", "ART", "ART QUOTES")
-        self.keywords_directions = ("COURTESY", "LID")
-        self.keywords_directions = ("FPS", "AIM", "AIMING")
+        self.keywords_toilet_paper = ("TP", "TOILET PAPER", "PAPER")
+        self.keywords_art = ("A", "ART", "ART QUOTES")
+        self.keywords_courtesy = ("COURTESY", "LID")
+        self.keywords_aiming = ("FPS", "AIM", "AIMING")
+        self.keywords_eating = ("FOOD", "EAT", "EATING")
+        self.keywords_febreze = ("FEBREEZE", "FEBREZE", "SPRAY", "ODOR")
         self.keywords_credits = ("C", "CREDITS")
+        self.keywords_wwjd = ("WWJD")
         
         # Setup testbed
         self.testbed = testbed.Testbed()
@@ -205,43 +208,64 @@ class Test_Static(LatrineTest):
             response = self.sms(keyword)
             self.assertTwiML(response)
             self.assertTrue(str(response).count('<Sms>') == 3)
-            for command in self.commands:
-                self.assertTrue(command in response, "Received instead: %s" % str(response))
+            for keyword in self.commands:
+                self.assertTrue(keyword in response, "Received instead: %s" % str(response))
                 
     def test_directions(self):
         for keyword in self.keywords_directions:
             response = self.sms(keyword)
             self.assertTwiML(response)
-            self.assertTrue(command in response, "Received instead: %s" % str(response))
+            self.assertTrue("Need help" in response, "Received instead: %s" % str(response))
+            self.assertTrue("TP" in response, "Received instead: %s" % str(response))
+            self.assertTrue("TOILET PAPER" in response, "Received instead: %s" % str(response))
+            self.assertTrue("A" in response, "Received instead: %s" % str(response))
+            self.assertTrue("COURTESY" in response, "Received instead: %s" % str(response))
+            self.assertTrue("FPS" in response, "Received instead: %s" % str(response))
+            self.assertTrue("AIMING" in response, "Received instead: %s" % str(response))
             
     def test_toiletPaper(self):
         for keyword in self.keywords_toilet_paper:
             response = self.sms(keyword)
             self.assertTwiML(response)
-            self.assertTrue(command in response, "Received instead: %s" % str(response))
+            self.assertTrue("Remove empty roll" in response, "Received instead: %s" % str(response))
+            self.assertTrue("Retrieve new roll" in response, "Received instead: %s" % str(response))
+            self.assertTrue("Input new roll" in response, "Received instead: %s" % str(response))
             
     def test_art(self):
         for keyword in self.keywords_art:
             response = self.sms(keyword)
             self.assertTwiML(response)
-            self.assertTrue(command in response, "Received instead: %s" % str(response))
+            self.assertTrue(" - " in response, "Received instead: %s" % str(response))
             
     def test_courtesy(self):
         for keyword in self.keywords_courtesy:
             response = self.sms(keyword)
             self.assertTwiML(response)
-            self.assertTrue(command in response, "Received instead: %s" % str(response))
+            self.assertTrue("What are you? An ape?" in response, "Received instead: %s" % str(response))
             
     def test_aiming(self):
         for keyword in self.keywords_aiming:
             response = self.sms(keyword)
             self.assertTwiML(response)
-            self.assertTrue(command in response, "Received instead: %s" % str(response))
+            self.assertTrue("Team Fortress 2" in response, "Received instead: %s" % str(response))
+            
+    def test_eating(self):
+        for keyword in self.keywords_eating:
+            response = self.sms(keyword)
+            self.assertTwiML(response)
+            self.assertTrue("shit where you eat" in response, "Received instead: %s" % str(response))
+            
+    def test_febreze(self):
+        for keyword in self.keywords_febreze:
+            response = self.sms(keyword)
+            self.assertTwiML(response)
+            self.assertTrue("febrezing" in response, "Received instead: %s" % str(response))
     
     def test_wwjd(self):
-        response = self.sms("WWJD")
-        self.assertTwiML(response)
-        self.assertTrue("owl" in response, "Received instead: %s" % str(response))
+        for keyword in self.keywords_wwjd:
+            response = self.sms("WWJD")
+            self.assertTwiML(response)
+            self.assertTrue("owl" in response, "Received instead: %s" % str(response))
         
 class Test_Call(LatrineTest):
     def test_callNoQueue(self):
