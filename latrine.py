@@ -225,7 +225,8 @@ class SmsHandler(MainPage):
     def help(self):
         r = twiml.Response()
         r.sms("Twilio Latrine HELP: Text S to see if there is a line.  Text Q to GET IN LINE. Text I to CHECKIN... (cont'd)")
-        r.sms("HELP (pg. 2): Text O to CHECKOUT.  Text R to get something to READ.  Text D for PROTIPS. (done)")
+        r.sms("HELP (pg. 2): Text O to CHECKOUT.  Text R to get something to READ.  Text D for PROTIPS.  (cont'd)")
+        r.sms("Text FOOD to learn what to do with the apple in your hand.  Text SPRAY to dispense with ODOR.  (done)")
         return r
     
     def directions(self):
