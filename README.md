@@ -62,3 +62,7 @@ About
 This work is licensed under GPLv3.  Created by Rob Spectre.  Crafted for my first demonstration to Twilio, Inc.
 
 Thanks for the track jacket - let's draw some fucking owls.
+
+[![githalytics.com
+alpha](https://cruel-carlota.pagodabox.com/e24f3481693e2da565ef9d486edb0673
+"githalytics.com")](http://githalytics.com/RobSpectre/Twilio-Latrine)
